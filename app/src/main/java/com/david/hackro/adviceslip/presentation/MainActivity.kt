@@ -1,10 +1,10 @@
-package com.david.hackro.adviceslip
+package com.david.hackro.adviceslip.presentation
 
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.david.hackro.adviceslip.R
 import com.david.hackro.adviceslip.databinding.ActivityMainBinding
-import com.david.hackro.adviceslip.presentation.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
