@@ -1,6 +1,5 @@
 package com.david.hackro.adviceslip
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import com.david.hackro.adviceslip.domain.Advice
 import com.david.hackro.adviceslip.domain.GetAdviceUseCase
@@ -21,9 +20,6 @@ class MainViewModelTest {
     @get:Rule
     val mockRule = MainDispatcherRule()
 
-    /*@get:Rule
-    val rule = InstantTaskExecutorRule()
-*/
     @RelaxedMockK
     private lateinit var getAdviceUseCase: GetAdviceUseCase
 

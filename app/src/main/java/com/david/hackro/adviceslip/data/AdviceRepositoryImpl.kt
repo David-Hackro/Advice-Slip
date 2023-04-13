@@ -40,6 +40,7 @@ class AdviceRepositoryImpl @Inject constructor(
 
     }
 
+
     private suspend fun getAdviceFromRemote(): Result<ResponseAdvice> {
         return kotlin.runCatching {
             remoteSource.getAdvice()

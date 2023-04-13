@@ -23,16 +23,20 @@ class MainViewModel @Inject constructor(private val getAdviceUseCase: GetAdviceU
     }
 
     private fun getAdvice() = viewModelScope.launch {
+        _state.value = State(isProgress = true)
+
         getAdviceUseCase.invoke().collect { result ->
             result.onSuccess {
-               //el rLog.i("success:", it.advice.toString())
                 _state.value = State(it)
             }.onFailure {
                 _state.value = State(isError = true)
-                //Log.i("failure:", it.message.toString())
             }
         }
     }
 
-    data class State(val advice: Advice? = null, val isError: Boolean = false)
+    data class State(
+        val advice: Advice? = null,
+        val isError: Boolean = false,
+        val isProgress: Boolean = false
+    )
 }

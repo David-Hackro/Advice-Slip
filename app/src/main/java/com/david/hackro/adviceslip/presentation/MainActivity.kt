@@ -3,7 +3,6 @@ package com.david.hackro.adviceslip.presentation
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.david.hackro.adviceslip.R
 import com.david.hackro.adviceslip.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -17,8 +16,21 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         initView()
+        initObservers()
         initData()
+    }
 
+    private fun initObservers() {
+        viewModel.state.observe(this) { state ->
+
+            when {
+                state.isProgress -> {}
+                state.isError -> {}
+                state.advice != null -> {
+                    binding.textView8.text = state.advice.advice
+                }
+            }
+        }
     }
 
     private fun initData() {
@@ -28,6 +40,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun initView() {
         binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(R.layout.activity_main)
+        setContentView(binding.root)
     }
 }
