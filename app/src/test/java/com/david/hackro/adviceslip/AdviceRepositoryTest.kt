@@ -5,20 +5,15 @@ import com.david.hackro.adviceslip.data.AdviceRepositoryImpl
 import com.david.hackro.adviceslip.data.data.AdviceDao
 import com.david.hackro.adviceslip.data.data.AdviceEntity
 import com.david.hackro.adviceslip.data.remote.AdviceApi
-import com.david.hackro.adviceslip.data.remote.ResponseAdvice
-import com.david.hackro.adviceslip.data.remote.toEntity
 import com.david.hackro.adviceslip.domain.AdviceRepository
 import com.david.hackro.adviceslip.domain.toDomain
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.coVerifyOrder
 import io.mockk.impl.annotations.RelaxedMockK
-import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.test.runTest
-import okhttp3.internal.wait
 import org.junit.Before
 import org.junit.Test
-import org.junit.jupiter.api.BeforeEach
 import kotlin.test.assertEquals
 
 class AdviceRepositoryTest {
@@ -38,7 +33,7 @@ class AdviceRepositoryTest {
     }
 
     @Test
-    fun `should wrap Success Result from localSource when localSource is success and save the remote response when remoteSource is success`() =
+    fun `should wrap Success Result from localSource when is success and save the remote success response`() =
         runTest {
             val localResponse = AdviceEntity()
             coEvery { localSource.getRandomAdvice() } returns localResponse
@@ -60,7 +55,7 @@ class AdviceRepositoryTest {
         }
 
     @Test
-    fun `should wrap Success Result from localSource when localSource is success wrap Failed Result when remoteSource is failed`() =
+    fun `should wrap Success Result from localSource when is success and remoteSource is failure `() =
         runTest {
             val localResponse = AdviceEntity()
             coEvery { localSource.getRandomAdvice() } returns localResponse
@@ -74,12 +69,32 @@ class AdviceRepositoryTest {
                     expected = Result.success(localResponse.toDomain()),
                     actual = result
                 )
+                awaitComplete()
+            }
 
-                val secondResult = this.awaitItem()
+            coVerifyOrder {
+                localSource.getRandomAdvice()
+                remoteSource.getAdvice()
+            }
+        }
+
+
+    @Test
+    fun `should wrap Failure Result when localSource is failure and remoteSource is failure`() =
+        runTest {
+
+            val localException = Exception("Test message")
+            coEvery { localSource.getRandomAdvice() } throws localException
+
+            val remoteException = Exception("Test message")
+            coEvery { remoteSource.getAdvice() } throws remoteException
+
+            objectUnderTest.getAdvice().test {
+                val result = this.awaitItem()
 
                 assertEquals(
-                    expected = Result.failure(testException),
-                    actual = secondResult
+                    expected = Result.failure(remoteException),
+                    actual = result
                 )
                 awaitComplete()
             }

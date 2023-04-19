@@ -11,5 +11,4 @@ class AdviceEntity {
 
     @ColumnInfo
     var advice: String? = null
-
 }

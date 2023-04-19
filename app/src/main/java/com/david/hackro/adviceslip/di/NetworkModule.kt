@@ -1,5 +1,6 @@
 package com.david.hackro.adviceslip.di
 
+import com.david.hackro.adviceslip.BuildConfig
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -24,7 +25,7 @@ object NetworkModule {
     fun provideRetrofitClient(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder().client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl("https://api.adviceslip.com/").build()
+            .baseUrl(BuildConfig.BASE_URL).build()
     }
 
 }

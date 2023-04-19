@@ -17,7 +17,6 @@ data class Slip(
     val id: Int? = null
 )
 
-
 fun ResponseAdvice.toEntity(): AdviceEntity {
     return AdviceEntity().apply {
         id = this@toEntity.slip?.id

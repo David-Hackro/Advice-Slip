@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AdviceSlip</string>
+    <string name="title_activity_advice_component">AdviceComponent</string>
+    <string name="toast_error">Oops! something went wrong! please try again.</string>
 </resources>

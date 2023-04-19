@@ -17,7 +17,6 @@ class AdviceRepositoryImpl @Inject constructor(
 ) : AdviceRepository {
 
     override fun getAdvice(): Flow<Result<Advice>> = flow {
-
         val local = getAdviceFromLocal()
 
         if (local.isSuccess) {
@@ -25,10 +24,7 @@ class AdviceRepositoryImpl @Inject constructor(
 
             getAdviceFromRemote().onSuccess {
                 localSource.updateOrInsertAdvice(it.toEntity())
-            }.onFailure {
-                emit(Result.failure(it))
             }
-
         } else {
             getAdviceFromRemote().onSuccess {
                 localSource.updateOrInsertAdvice(it.toEntity())
@@ -37,9 +33,7 @@ class AdviceRepositoryImpl @Inject constructor(
                 emit(Result.failure(it))
             }
         }
-
     }
-
 
     private suspend fun getAdviceFromRemote(): Result<ResponseAdvice> {
         return kotlin.runCatching {

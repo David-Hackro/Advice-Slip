@@ -6,8 +6,11 @@ import com.david.hackro.adviceslip.domain.GetAdviceUseCase
 import com.david.hackro.adviceslip.presentation.MainViewModel
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
+import io.mockk.coVerifyOrder
+import io.mockk.coVerifySequence
 import io.mockk.impl.annotations.RelaxedMockK
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.flowOf
 import org.junit.Before
 import org.junit.Rule
@@ -28,18 +31,23 @@ class MainViewModelTest {
     @Before
     fun setUp() {
         MockKAnnotations.init(this)
-        setUpMainViewModel()
     }
 
     @Test
-    fun `should update state with sucess response when getAdviceUseCase is success`() {
+    fun `should update state with success response when getAdviceUseCase is success`() {
         val getAdviceUseCaseResponse = Advice("advice", 1)
         coEvery { getAdviceUseCase.invoke() } returns flowOf(Result.success(getAdviceUseCaseResponse))
 
-        objectUnderTest.loadData()
+        setUpMainViewModel()
 
         assertEquals(
-            expected = MutableLiveData(MainViewModel.State(getAdviceUseCaseResponse)).value,
+            expected = MutableStateFlow(MainViewModel.State("", false, true)).value,
+            actual = objectUnderTest.state.value
+        )
+
+        assertEquals(
+            expected = MutableStateFlow(
+                MainViewModel.State(getAdviceUseCaseResponse.advice, false, false)).value,
             actual = objectUnderTest.state.value
         )
     }

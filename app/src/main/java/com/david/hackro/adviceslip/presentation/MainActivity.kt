@@ -1,5 +1,6 @@
 package com.david.hackro.adviceslip.presentation
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -18,28 +19,33 @@ class MainActivity : AppCompatActivity() {
         initView()
         initObservers()
         initData()
+        startActivity(Intent(this, AdviceComponent::class.java))
     }
-
-    private fun initObservers() {
-        viewModel.state.observe(this) { state ->
-
-            when {
-                state.isProgress -> {}
-                state.isError -> {}
-                state.advice != null -> {
-                    binding.textView8.text = state.advice.advice
-                }
-            }
-        }
-    }
-
-    private fun initData() {
-        viewModel.loadData()
-    }
-
 
     private fun initView() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+    }
+
+    private fun initObservers() {
+      /*  viewModel.state.observe(this) { state ->
+
+            when {
+                state.isProgress -> {
+                    binding.progressBar.isVisible = true
+                }
+                state.isError -> {
+                    binding.progressBar.isVisible = false
+                }
+                else -> {
+                    binding.progressBar.isVisible = false
+                    binding.advice.text = state.response?.advice
+                }
+            }
+        }*/
+    }
+
+    private fun initData() {
+        viewModel.loadAdvice()
     }
 }

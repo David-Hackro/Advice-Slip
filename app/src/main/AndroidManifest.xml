@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".MyApp"
         android:allowBackup="true"
@@ -14,14 +15,20 @@
         android:theme="@style/Theme.AdviceSlip"
         tools:targetApi="31">
         <activity
-            android:name=".presentation.MainActivity"
+            android:name=".presentation.AdviceComponent"
+            android:label="@string/title_activity_advice_component"
+            android:theme="@style/Theme.AdviceSlip"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
+        <activity
+            android:name=".presentation.MainActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
