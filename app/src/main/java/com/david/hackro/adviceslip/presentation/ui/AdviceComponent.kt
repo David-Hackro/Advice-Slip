@@ -1,4 +1,4 @@
-package com.david.hackro.adviceslip.presentation
+package com.david.hackro.adviceslip.presentation.ui
 
 import android.os.Bundle
 import android.widget.Toast
@@ -34,6 +34,7 @@ import com.airbnb.lottie.compose.*
 import com.david.hackro.adviceslip.R
 import com.david.hackro.adviceslip.presentation.ui.theme.AdviceSlipTheme
 import com.david.hackro.adviceslip.presentation.ui.theme.customTitle
+import com.david.hackro.adviceslip.presentation.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -44,6 +45,7 @@ class AdviceComponent : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initView()
+        initData()
     }
 
     private fun initView() {
@@ -60,6 +62,11 @@ class AdviceComponent : ComponentActivity() {
             }
         }
     }
+
+    private fun initData() {
+        viewModel.loadAdvice()
+    }
+
 }
 
 @Composable

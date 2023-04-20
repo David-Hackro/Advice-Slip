@@ -2,7 +2,7 @@ package com.david.hackro.adviceslip
 
 import com.david.hackro.adviceslip.domain.Advice
 import com.david.hackro.adviceslip.domain.GetAdviceUseCase
-import com.david.hackro.adviceslip.presentation.MainViewModel
+import com.david.hackro.adviceslip.presentation.viewmodel.MainViewModel
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.impl.annotations.RelaxedMockK
