@@ -3,10 +3,10 @@ name: Android Pull Request & Master CI
 on:
   pull_request:
     branches:
-      - 'master'
+      - 'compose'
   push:
     branches:
-      - 'master'
+      - 'compose'
 
 jobs:
   test:
