@@ -2,6 +2,7 @@ package com.david.hackro.adviceslip.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.david.hackro.adviceslip.domain.Advice
 import com.david.hackro.adviceslip.domain.GetAdviceUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -18,9 +19,6 @@ class MainViewModel @Inject constructor(private val getAdviceUseCase: GetAdviceU
     private val _state = MutableStateFlow(State())
     val state: StateFlow<State> = _state.asStateFlow()
 
-    init {
-        loadAdvice()
-    }
 
     fun loadAdvice() {
         getAdvice()
