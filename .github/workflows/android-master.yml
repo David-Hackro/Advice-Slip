@@ -1,12 +1,12 @@
-name: Android Pull Request & Compose CI
+name: Android Pull Request & Master CI
 
 on:
   pull_request:
     branches:
-      - 'compose'
+      - 'master'
   push:
     branches:
-      - 'compose'
+      - 'master'
 
 jobs:
   test:
