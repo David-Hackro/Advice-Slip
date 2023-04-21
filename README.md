@@ -2,7 +2,7 @@
 # Advice [![Android Pull Request & Master CI](https://github.com/David-Hackro/Advice-Slip/actions/workflows/android-master.yml/badge.svg)](https://github.com/David-Hackro/Advice-Slip/actions/workflows/android-master.yml)
 
 ## Goal
-Simple project to show a way to implement a common technologies and approaches
+- Keep a simple project and show how to implement common technologies and approaches
 
 
 ## Details
