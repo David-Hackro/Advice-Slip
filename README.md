@@ -31,6 +31,15 @@
 ## API
 - [https://api.adviceslip.com/](https://api.adviceslip.com/)
 
+# Referencies
+
+- [https://medium.com/geekculture/atomic-updates-with-mutablestateflow-dc0331724405](https://medium.com/geekculture/atomic-updates-with-mutablestateflow-dc0331724405)
+- [https://svatasimara.medium.com/domain-driven-design-part-5-repository-d5ad32b2e06f](https://svatasimara.medium.com/domain-driven-design-part-5-repository-d5ad32b2e06f)
+- [https://amitshekhar.me/blog/stateflow-and-sharedflow](https://amitshekhar.me/blog/stateflow-and-sharedflow)
+- [https://medium.com/google-developer-experts/github-actions-for-android-developers-6b54c8a32f55](https://medium.com/google-developer-experts/github-actions-for-android-developers-6b54c8a32f55)
+- [https://medium.com/@theAndroidDeveloper/5-common-kotlin-coroutines-interview-questions-f084d098f51d](https://medium.com/@theAndroidDeveloper/5-common-kotlin-coroutines-interview-questions-f084d098f51d)
+- [https://github.com/Kotlin/kotlinx.coroutines/issues/1814](https://github.com/Kotlin/kotlinx.coroutines/issues/1814)
+
 
 License
 ----
