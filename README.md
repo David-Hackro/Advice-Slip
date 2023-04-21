@@ -12,6 +12,7 @@ Simple project to show a way to implement a common technologies and approaches
 - [Coroutines](https://developer.android.com/kotlin/coroutines?gclid=Cj0KCQjwxYOiBhC9ARIsANiEIfZsPrl2oyV57TqpHPGyFWzrPfFh6wP7pIVzL4CFQS7ynxdRCkzLKXUaAmMlEALw_wcB&gclsrc=aw.ds&hl=es-419)
 - [StateFlow](https://developer.android.com/kotlin/flow/stateflow-and-sharedflow?hl=es-419)
 - [Compose](https://developer.android.com/jetpack/compose?gclid=Cj0KCQjwxYOiBhC9ARIsANiEIfZAsMrrOjy3ChL5A81IvlStavnwQYHeVQ1ra2W_3ixes5V1258yzokaAtl0EALw_wcB&gclsrc=aw.ds&hl=es-419)
+- [Dependency Injection](https://developer.android.com/training/dependency-injection?hl=es-419)
 
 
 ## Screens
