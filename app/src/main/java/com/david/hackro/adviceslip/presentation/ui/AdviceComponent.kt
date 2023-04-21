@@ -41,7 +41,6 @@ import dagger.hilt.android.AndroidEntryPoint
 class AdviceComponent : ComponentActivity() {
 
     private val viewModel: MainViewModel by viewModels()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initView()
@@ -100,9 +99,16 @@ fun adviceScreen(mainViewModel: MainViewModel = viewModel(), onRefreshAdviceList
     }
 }
 
+@OptIn(ExperimentalAnimationApi::class)
 @Composable
 private fun showAdvice(advice: String) {
-    textContainer(advice, customTitle)
+    AnimatedContent(targetState = advice) {
+        Text(
+            text = advice,
+            modifier = Modifier.fillMaxWidth().animateContentSize().padding(10.dp),
+            style = customTitle,
+        )
+    }
 }
 
 @Composable
@@ -110,18 +116,6 @@ private fun showError() {
     Toast.makeText(
         LocalContext.current, stringResource(R.string.toast_error), Toast.LENGTH_SHORT
     ).show()
-}
-
-@OptIn(ExperimentalAnimationApi::class)
-@Composable
-private fun textContainer(advice: String, typography: TextStyle) {
-    AnimatedContent(targetState = advice) {
-        Text(
-            text = advice,
-            modifier = Modifier.fillMaxWidth().animateContentSize().padding(10.dp),
-            style = typography,
-        )
-    }
 }
 
 @Composable

@@ -19,7 +19,6 @@ class MainViewModel @Inject constructor(private val getAdviceUseCase: GetAdviceU
     private val _state = MutableStateFlow(State())
     val state: StateFlow<State> = _state.asStateFlow()
 
-
     fun loadAdvice() {
         getAdvice()
     }
